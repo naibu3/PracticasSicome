@@ -1,0 +1,79 @@
+#A
+0000 0000
+#B
+0001 0001
+@
+2
+@
+CRA
+#Comprobamos signo de A
+ADD 0000
+ROL_F_ACC
+SFZ
+JMP 001F
+#A positivo=====================================================================
+
+#Comprobamos signo de B
+CRA
+ADD 0001
+ROL_F_ACC
+SFZ
+JMP 001B
+
+#A y B positivos (ya esta B en F Acc)____________________________________________
+ROR_F_ACC
+CTA
+ITA
+ADD 0000
+ROL_F_ACC
+#Si hay overflow B es mayor
+SFZ
+JMP 0017
+CRA
+ADD 0000
+STA 0001
+HALT
+
+CRA
+ADD 0001
+STA 0000
+HALT
+
+#A positivo y B negativo______________________________________________________
+CRA
+ADD 0000
+STA 0001
+HALT
+
+#A negativo=====================================================================
+
+#Comprobamos signo de B
+
+CRA
+ADD 0001
+ROL_F_ACC
+SFZ
+JMP 27
+
+#A negativo y B positivo (ya esta B en Acc)____________________________________
+ROR_F_ACC
+STA 0000
+HALT
+
+#A y B negativos (ya esta B en Acc)___________________________________________
+ROR_F_ACC
+CTA
+ITA
+ADD 0000
+#Si hay avf A es mayor
+SFZ
+JMP 0031
+CRA
+ADD 0001
+STA 0000
+HALT
+
+CRA 
+ADD 0000
+STA 0001
+HALT

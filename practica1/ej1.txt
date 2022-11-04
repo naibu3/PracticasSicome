@@ -1,0 +1,16 @@
+0 0004
+1 0
+@
+2
+@
+#Anadimos el numero al Acc
+CRA
+ADD 0
+#Ponemos el bit de signo en F
+ROL_F_ACC
+#Limpiamos
+CRA
+#Ponemos F en el bit menos significativo y guardamos el resultado
+ROL_F_ACC
+STA 1
+HALT

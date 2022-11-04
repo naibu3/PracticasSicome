@@ -1,0 +1,12 @@
+0 1
+1 FFFB
+@
+3
+@
+CRA
+ADD 0
+ITA
+ISZ 1
+JMP 5
+STA 2
+HALT

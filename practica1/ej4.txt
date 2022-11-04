@@ -1,0 +1,48 @@
+#ITERADOR BUCLE
+0000 FFFB
+#TABLA
+0001 0001
+0002 0002
+0003 0003
+0004 0004
+0005 0005
+#RESULTADO
+0006 0000
+#PUNTERO DE TABLA
+0007 0001
+@
+0008
+@
+#BUCLE
+#Hace el valor absoluto, lo suma al resultado y lo guarda en el resultado
+CSR 0012
+ADD 0006
+STA 0006
+
+#Incremento el ptr de tabla (podria ser con ISZ y ahorramos 3 instr)
+CRA
+ADD 0007
+ITA
+STA 0007
+
+ISZ 0000
+JMP 0008
+HALT
+
+#SUBRUTINA VAL ABS
+0012 HALT
+CRA
+ADDI 0007
+ROL_F_ACC
+#Si es positivo (Z=0) se guarda tal cual, sino (Z=1) se deshace el c2
+SFZ
+JMP 001A
+#Devolvemos f y salimos dejando el resultado en Acc
+ROR_F_ACC
+JMPI 0012  
+#SUBRUTINA VALOR ABSOLUTO (deshacer c2) -> abajo
+ROR_F_ACC
+CTA
+ITA
+#Volvemos dejando el reultado en Acc
+JMPI 0012

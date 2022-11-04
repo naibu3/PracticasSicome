@@ -1,0 +1,15 @@
+0 0
+1 0
+@
+2
+@
+CRA
+ADD 0
+CSR 7
+STA 1
+HALT
+7 HALT
+ITA
+ITA
+ITA
+JMPI 7

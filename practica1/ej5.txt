@@ -1,0 +1,45 @@
+#FACTORES B x A // $(0001) x $(0000)
+0000 000A
+0001 000D
+#PRODUCTO
+0002 0000
+#ITERADOR DEL BUCLE (SC) -16
+0003 FFF0
+@
+4
+@
+#Comprobamos si el bit menos signif de A es 0 (no sumo) o 1 (sumo)
+CRA
+ADD 0000
+ROR_F_ACC
+STA 0000
+SFZ
+JMP 0013
+
+#No sumo (solo desplazo B)
+CRA
+CRF
+ADD 0001
+ROL_F_ACC
+CRF
+STA 0001
+
+ISZ 0003
+JMP 0004
+HALT
+
+#Sumo
+CRA
+CRF
+ADD 0002
+ADD 0001
+STA 0002
+CRA
+ADD 0001
+ROL_F_ACC
+CRF
+STA 0001
+
+ISZ 0003
+JMP 0004
+HALT
